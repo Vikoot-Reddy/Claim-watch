@@ -1,22 +1,35 @@
 Fraud Investigation Report
 
 Claim Summary:
-Auto collision claim submitted without incident date, supporting invoices, or repair estimate details.
-
+Property claim, for $27,500.00, incident date 2026-02-01, submission date 2026-02-28, policy start 2025-06-01.
 Risk Level:
 Medium
-
 Risk Score:
-55/100
+49/100
 
 Key Suspicious Indicators:
-- Financial red flags: Claimed amount appears high relative to missing documentation.
-- Behavioral red flags: Urgent request for immediate payout before standard verification.
-- Context inconsistencies: Narrative lacks verifiable sequence of events.
-- Timing anomalies: Filing timeline cannot be validated due to absent incident date.
+
+Financial:
+- Claim amount is moderately high and warrants enhanced verification.
+
+Behavioral:
+- Multiple prior claims warrant historical pattern verification.
+- Narrative includes urgency pressure for accelerated settlement.
+
+Context:
+- None identified from submitted data.
+
+Timing:
+- Incident occurred shortly after coverage upgrade.
+
+Language Pattern Indicators:
+- Urgency terms detected in claim narrative.
+- Exaggerative wording detected that may overstate severity.
 
 Detailed Analysis:
-The claim currently contains insufficient evidence for a low-risk classification. The monetary request is not independently supported by itemized repair records, and the request urgency may indicate pressure tactics. However, absent complete claim data, there is not enough objective evidence to support a high-risk fraud determination. This is a provisional assessment pending documentation.
+This assessment classifies the claim as Medium risk with a score of 49/100 based on available financial, behavioral, contextual, timing, and language-pattern evidence. Detected indicators should be corroborated against policy records, invoices, statements, and independent evidence. Conclusion remains evidence-based and non-accusatory pending standard verification completion.
 
 Recommended Action:
-Request Additional Documentation
+Manual Review Required
+Justification:
+Risk score of 49/100 indicates notable anomalies that require investigator confirmation.

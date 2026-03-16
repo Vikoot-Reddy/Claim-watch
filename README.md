@@ -1,55 +1,70 @@
 # ClaimWatch
 
-ClaimWatch is an AI-powered Insurance Fraud Detection Assistant that analyzes claim inputs, assigns fraud risk, and outputs a structured **Fraud Investigation Report**.
+ClaimWatch is an AI-powered Insurance Fraud Detection Analyst that performs end-to-end insurance claim risk assessment and generates investigator-ready fraud reports.
 
-## Features
+## What ClaimWatch Does
 
-- End-to-end JSON input → risk analysis → text report workflow
-- Risk level classification: `Low`, `Medium`, `High`
-- Risk score output from `0` to `100`
-- Suspicious indicator detection across:
-  - Financial red flags
-  - Behavioral red flags
-  - Context inconsistencies
-  - Timing anomalies
-- Action recommendation:
-  - Approve
-  - Manual Review
+ClaimWatch evaluates claims using five investigation dimensions:
+
+1. **Financial Risk Indicators**
+2. **Behavioral Indicators**
+3. **Timing & Context Analysis**
+4. **Logical Consistency Checks**
+5. **Language Pattern Indicators**
+
+It then assigns:
+
+- **Risk Score** (`0–100`)
+- **Risk Level**
+  - `Low` (`0–30`)
+  - `Medium` (`31–60`)
+  - `High` (`61–100`)
+- **Recommended Action**
+  - Approve Claim
+  - Manual Review Required
   - Request Additional Documentation
   - Escalate to Fraud Investigation Unit
 
 ## Project Structure
 
-- `claimwatch.py` — CLI + fraud analysis engine
-- `tests/test_claimwatch.py` — unit tests for low/medium/high-risk paths
-- `sample_claim.json` — sample input payload
-- `report_example.md` — sample formatted report output
+- `claimwatch.py` — CLI and analysis engine
+- `tests/test_claimwatch.py` — unit tests covering low/medium/high and missing-data cases
+- `sample_claim.json` — runnable sample input
+- `report_example.md` — sample structured report output
 
-## Input Schema
-
-The CLI expects a JSON file with the following fields:
+## Input JSON Schema
 
 ```json
 {
   "claim_amount": 27500,
-  "claim_description": "Water damage claim...",
-  "claim_type": "Home",
+  "claim_type": "Property",
+  "claim_description": "Water damage in house basement...",
   "incident_date": "2026-02-01",
   "filing_date": "2026-02-28",
-  "behavioral_notes": "Claimant was cooperative...",
-  "prior_claim_count": 2
+  "policy_start_date": "2025-06-01",
+  "coverage_upgrade_date": "2026-01-25",
+  "policy_limit": 50000,
+  "prior_claim_count": 2,
+  "claimant_history": "Prior small claim in previous year.",
+  "behavioral_notes": "Claimant cooperative but repeatedly requested same-day payout.",
+  "supporting_documents": ["photos.zip", "repair_estimate.pdf"]
 }
 ```
 
 ### Field Notes
 
-- `claim_amount` *(number, optional but recommended)*
-- `claim_description` *(string, required for strong analysis)*
-- `claim_type` *(string, optional but recommended)*
-- `incident_date` *(string, formats: `YYYY-MM-DD`, `YYYY/MM/DD`, `MM/DD/YYYY`)*
-- `filing_date` *(string, same supported formats)*
-- `behavioral_notes` *(string, optional)*
+- `claim_amount` *(number)*
+- `claim_type` *(string; Auto, Health, Property, Travel, Life, etc.)*
+- `claim_description` *(string)*
+- `incident_date` *(string; `YYYY-MM-DD`, `YYYY/MM/DD`, `MM/DD/YYYY`)*
+- `filing_date` *(string; claim submission date)*
+- `policy_start_date` *(string)*
+- `coverage_upgrade_date` *(string, optional)*
+- `policy_limit` *(number, optional)*
 - `prior_claim_count` *(integer, optional)*
+- `claimant_history` *(string, optional)*
+- `behavioral_notes` *(string, optional)*
+- `supporting_documents` *(array of strings, optional)*
 
 ## Run ClaimWatch
 
@@ -63,9 +78,9 @@ Optional file output:
 python3 claimwatch.py --input sample_claim.json --output report.txt
 ```
 
-## Output Format
+## Report Format
 
-ClaimWatch always emits this structure:
+ClaimWatch emits this structure:
 
 ```text
 Fraud Investigation Report
@@ -73,29 +88,22 @@ Fraud Investigation Report
 Claim Summary:
 Risk Level:
 Risk Score:
+
 Key Suspicious Indicators:
+
+Financial:
+Behavioral:
+Context:
+Timing:
+Language Pattern Indicators:
+
 Detailed Analysis:
+
 Recommended Action:
+Justification:
 ```
 
-## Analysis Logic (High Level)
-
-ClaimWatch evaluates:
-
-1. Claim amount reasonableness
-2. Claim description quality, suspicious urgency, and exaggeration language
-3. Claim type context
-4. Timeline consistency between incident and filing
-5. Behavioral notes for inconsistency or non-cooperation
-6. Narrative contradictions
-7. Repeated or templated phrasing
-8. Missing critical fields (provisional handling)
-
-If key fields are missing, ClaimWatch uses a conservative provisional medium-risk posture and recommends requesting documentation.
-
 ## Testing
-
-Run unit tests:
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
