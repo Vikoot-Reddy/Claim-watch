@@ -1,0 +1,14 @@
+{
+  "claim_amount": 27500,
+  "claim_type": "Property",
+  "claim_description": "Water damage reported in house basement. Claimant requests urgent release of funds immediately due to total loss of appliances.",
+  "incident_date": "2026-02-01",
+  "filing_date": "2026-02-28",
+  "policy_start_date": "2025-06-01",
+  "coverage_upgrade_date": "2026-01-25",
+  "policy_limit": 50000,
+  "prior_claim_count": 2,
+  "claimant_history": "Prior small property claim in previous year.",
+  "behavioral_notes": "Claimant cooperative but repeatedly requested same-day payout.",
+  "supporting_documents": ["photos.zip", "repair_estimate.pdf"]
+}
